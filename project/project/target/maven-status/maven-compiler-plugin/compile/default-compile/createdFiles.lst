@@ -1,6 +1,0 @@
-com\crud_operation\application\conntroller\EmployeesController.class
-com\crud_operation\application\model\Employee.class
-com\crud_operation\application\ProjectApplication.class
-com\crud_operation\application\service\CrudOprationService.class
-com\crud_operation\application\repository\EmployeesRepository.class
-com\crud_operation\application\model\EmployeeRequest.class
