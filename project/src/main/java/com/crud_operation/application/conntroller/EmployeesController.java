@@ -57,7 +57,4 @@ public class EmployeesController {
         repository.findById(id).orElseThrow(() -> new RuntimeException("Entity Not Found ID :" + id));
         repository.deleteById(id);
     }
-    public void printComment(){
-        System.out.println("print Comment");
-    }
 }
