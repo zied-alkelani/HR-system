@@ -1,6 +1,4 @@
 package com.crud_operation.application.conntroller;
-
-
 import com.crud_operation.application.model.Employee;
 import com.crud_operation.application.model.EmployeeRequest;
 import com.crud_operation.application.repository.EmployeesRepository;
@@ -14,14 +12,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @RestController
 @RequestMapping("/employees")
-
 public class EmployeesController {
-
     private final EmployeesRepository repository;
-
     public EmployeesController(EmployeesRepository repository) {
         this.repository = repository;
     }
@@ -29,7 +23,6 @@ public class EmployeesController {
     private String port;
     @Value("${crud.databasetype}")
     private String dataBaseType;
-
     @GetMapping("/print")
     public Map<String, String> print() {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
@@ -37,22 +30,14 @@ public class EmployeesController {
         stringStringHashMap.put("DataBaseType", dataBaseType);
         return stringStringHashMap;
     }
-
-
-
     @GetMapping
     public Iterable<Employee> getAllEmployees() {
         return repository.findAll();
     }
-
-
     @GetMapping("/{id}")
     public Employee getEmployeesById(@PathVariable ("id") Long id ){
     return repository.findById(id).orElseThrow(() -> new RuntimeException("Entity Not Found ID : "+id));
     }
-
-
-
     @PostMapping
     public void addEmployee(@RequestBody EmployeeRequest request) {
         Employee employee = new Employee();
@@ -61,7 +46,6 @@ public class EmployeesController {
 
         repository.save(employee);
     }
-
     @PutMapping("/{id}")
     public void updateEmployee (@RequestBody EmployeeRequest request , @PathVariable Long id){
         Employee employee = repository.findById(id).orElseThrow(() -> new RuntimeException("Entity Not Found ID :" + id));
@@ -69,20 +53,9 @@ public class EmployeesController {
         employee.setPassword(request.getPassword());
         repository.save(employee);
     }
-
-
-
-
     @DeleteMapping("/{id}")
     public void deleteEmployeeById(@PathVariable Long id) {
         repository.findById(id).orElseThrow(() -> new RuntimeException("Entity Not Found ID :" + id));
         repository.deleteById(id);
     }
-
-
-
-
-
-
-
 }
