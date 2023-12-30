@@ -52,11 +52,12 @@ public class EmployeesController {
         employee.setPassword(request.getPassword());
         repository.save(employee);
     }
-    /*111111*/
     @DeleteMapping("/{id}")
     public void deleteEmployeeById(@PathVariable Long id) {
         repository.findById(id).orElseThrow(() -> new RuntimeException("Entity Not Found ID :" + id));
         repository.deleteById(id);
     }
-    /*comment*/
+    public void printComment(){
+        System.out.println("print Comment");
+    }
 }
